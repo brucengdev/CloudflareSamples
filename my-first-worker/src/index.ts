@@ -11,8 +11,18 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import { buildParams } from "./utils";
+
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response("Hello Worker!");
-	},
+		const url = request.url
+		const params = buildParams(url)
+		if(Object.keys(params).length == 0) {
+			return new Response("Hello Worker!");
+		}
+		
+		return new Response(`Hello, ${params["name"]}!`)
+	}
+
+	
 } satisfies ExportedHandler<Env>;

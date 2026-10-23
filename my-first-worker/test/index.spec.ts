@@ -26,4 +26,9 @@ describe("Hello World worker", () => {
 		const response = await SELF.fetch("https://example.com");
 		expect(await response.text()).toMatchInlineSnapshot(`"Hello Worker!"`);
 	});
+
+	it("responds with greeting from querystring params (integration style)", async () => {
+		const response = await SELF.fetch("https://example.com?name=Wayne");
+		expect(await response.text()).toMatchInlineSnapshot(`"Hello, Wayne!"`);
+	});
 });
