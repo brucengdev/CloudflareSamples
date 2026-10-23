@@ -18,7 +18,7 @@ export default {
 		const url = request.url
 		const params = buildParams(url)
 		if(Object.keys(params).length == 0) {
-			return new Response("Hello Worker!");
+			return new Response("Hello Worker! add name querystring parameter to get greeting.");
 		}
 		
 		return new Response(`Hello, ${params["name"]}!`)
